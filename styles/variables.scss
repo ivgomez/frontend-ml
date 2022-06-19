@@ -1,0 +1,46 @@
+//Colors
+$primary-color: #FFE600;
+$secondary-color: #EEEEEE;
+$text-color: #333333;
+$gray-color: #666666;
+$gray-light-color: #999999;
+
+$grid-columns:      12;
+$grid-gutter-width: 30px;
+$font-size-base : 20;
+$font-family-sans-serif:
+'Barlow Semi Condensed', sans-serif;
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 526px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 640px,//540
+  md: 740px,//720
+  lg: 960px,
+  xl: 1140px
+);
+
+// spacing -> margin - padding
+$spaces : (
+  none: '0px',
+  xxxs: '4px',
+  xxs: '8px',
+  xs: '16px',
+  s: '24px',
+  m: '32px',
+  l: '40px',
+  xl: '48px',
+  xxl: '56px',
+  xxxl: '64px',
+)
