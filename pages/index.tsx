@@ -1,14 +1,14 @@
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.scss";
+import { Layout } from "@components/layout";
 
-const Home: NextPage = () => {
+const Search: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Hello world</h1>
-      </main>
-    </div>
+    <Layout>
+      <div>
+        <h1>Body</h1>
+      </div>
+    </Layout>
   );
 };
 
-export default Home;
+export default Search;

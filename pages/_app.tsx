@@ -1,8 +1,21 @@
-import '../styles/globals.scss'
-import type { AppProps } from 'next/app'
+import { ThemeProvider } from "styled-components";
+import type { AppProps } from "next/app";
+import dynamic from "next/dynamic";
+import getPageContext from "../lib/getPageContext";
+import GlobalStyles from "../lib/GlobalStyles";
+const DynamicGlobalFonts = dynamic(() => import("../public/fonts/fontStyles"), {
+  ssr: false,
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const pageContext = getPageContext();
+  return (
+    <ThemeProvider theme={pageContext.theme}>
+      <GlobalStyles />
+      <DynamicGlobalFonts />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
