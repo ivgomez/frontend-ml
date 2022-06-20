@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Header } from "../organisms";
+import { Header } from "@ui/organisms";
+import { breakpoint } from "@theme";
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -8,7 +9,7 @@ type ButtonProps = {
 export const Layout = ({ children }: ButtonProps) => (
   <LayoutWrapper>
     <Header />
-    <div className="flex-1">{children}</div>
+    <Main>{children}</Main>
   </LayoutWrapper>
 );
 
@@ -17,4 +18,12 @@ const LayoutWrapper = styled.div`
   min-height: 100vh;
   flex-direction: column;
   scroll-behavior: smooth;
+`;
+
+const Main = styled.main`
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors?.secondary};
+  ${breakpoint.laptop`
+    padding: 0 10rem;
+  `}
 `;

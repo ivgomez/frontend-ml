@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Input = () => {
-  return <InputWrapper />;
+export const Input = (props: any) => {
+  return <InputWrapper {...props} />;
 };
 
 const InputWrapper = styled.input`
@@ -10,7 +10,6 @@ const InputWrapper = styled.input`
   border: none;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
-  border-radius: 4px 0 0 4px;
   font-size: 16px;
   line-height: 28px;
 `;

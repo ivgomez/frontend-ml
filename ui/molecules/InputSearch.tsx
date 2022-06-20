@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { Input } from "@components/atoms";
-import { SearchButton } from "@components/atoms/SearchButton";
+import { Input } from "../atoms";
+import { SearchButton } from "../atoms/SearchButton";
 import React from "react";
-import buttonIcon from "@static/images/icons/iconSearch.png";
 
-export const InputSearch = () => {
+export const InputSearch = (props: any) => {
+  const icon = "/static/images/icons/iconSearch.png";
   return (
     <InputSearchWrapper>
-      <Input />
-      <SearchButton icon={buttonIcon.src} />
+      <Input {...props} />
+      <SearchButton icon={icon} />
     </InputSearchWrapper>
   );
 };

@@ -6,7 +6,7 @@ export const SearchButton = ({ icon, children }: any) => (
   <SearchButtonWrapper>
     {icon && (
       <IconWrapper>
-        <img src={icon} alt="equal housing" />
+        <img src={icon} alt="search" data-e2e-brand="search" />
       </IconWrapper>
     )}
     {children}

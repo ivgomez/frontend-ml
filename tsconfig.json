@@ -16,7 +16,9 @@
     "incremental": true,
     "paths": {
       "@components/*": ["./components/*"],
+      "@ui/*": ["./ui/*"],
       "@theme": ["./lib/theme"],
+      "@api": ["./services/api"],
       "@utils/*": ["./lib/utils/*"],
       "@models/*": ["./models/*"],
       "@static/*": ["./public/static/*"]

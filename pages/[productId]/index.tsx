@@ -1,25 +1,25 @@
 import Head from "next/head";
 import type { NextPage, NextPageContext } from "next";
 import api from "@api";
-import { Search } from "@components/Search/Search";
+import { Product } from "@components/Product/Product";
 
-const SearchPage: NextPage = (props) => {
+const ProductPage: NextPage = ({ response, query }: any) => {
   return (
     <>
       <Head>
-        <title>Search</title>
+        <title>Product</title>
       </Head>
-      <Search {...props} />
+      <Product response={response} query={query} />
     </>
   );
 };
 
 export async function getServerSideProps(context: NextPageContext) {
   const { query } = context;
-  const { q } = query;
+  const { productId } = query;
   let response = {};
   try {
-    const axiosResponse = await api.search(q as string);
+    const axiosResponse = await api.getItemById(productId as string);
     response = axiosResponse.data;
   } catch (error) {
     console.error(error);
@@ -33,4 +33,4 @@ export async function getServerSideProps(context: NextPageContext) {
   };
 }
 
-export default SearchPage;
+export default ProductPage;

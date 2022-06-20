@@ -7,6 +7,8 @@ type layerType = {
   gray: string;
   grayDark: string;
   grayLight: string;
+  white: string;
+  hover: string;
 };
 
 type fontsType = {
