@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { LogoSection } from "@components/atoms/LogoSection";
+import { breakpoint } from "@theme";
+import { LogoSection } from "@components/atoms";
+import { InputSearch } from "@components/molecules";
 
 export const Header = () => (
   <GlobalHeaderWrapper>
@@ -9,6 +11,7 @@ export const Header = () => (
           <LogoSection />
         </LogoSectionContainer>
       </Box>
+      <InputSearch />
     </MainNav>
   </GlobalHeaderWrapper>
 );
@@ -34,8 +37,12 @@ const LogoSectionContainer = styled.div`
 const MainNav = styled.nav`
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  padding: 0 1.5rem;
+  justify-content: space-between;
+  margin: 0 auto;
   font-size: 0.875rem;
-  height: 4rem; /* 64px */
+  height: 4rem;
+
+  ${breakpoint.laptop`
+    padding: 0 10rem;
+  `}
 `;
