@@ -30,29 +30,35 @@ export const Product: FC<Props> = (props) => {
   const priceFormatted = formatCurrency(amount, currency);
   return (
     <Layout>
+      <BreadCrumbsWrapper>
+        <BreadCrumbWrapper>Electrónica, audio y video</BreadCrumbWrapper>
+        <BreadCrumbWrapper>iPod</BreadCrumbWrapper>
+        <BreadCrumbWrapper>Reproductores</BreadCrumbWrapper>
+      </BreadCrumbsWrapper>
       <ProductWrapper>
         <ProductCardWrapper>
           <HeaderCardWrapper>
             <SideBarWrapper>
               <Image
-                layout="fixed"
+                layout="fill"
+                objectFit="contain"
                 src={picture}
-                alt="produdct"
-                width={300}
-                height={300}
+                alt="product"
                 quality={100}
               />
             </SideBarWrapper>
             <ContentWrapper>
-              <TextExtraSmall>{capitalize(condition)}</TextExtraSmall>
-              <TextStandard>{title}</TextStandard>
-              <TextPrice>{priceFormatted}</TextPrice>
-              <div>button</div>
+              <TextExtraSmall isProductDetail>
+                {capitalize(condition)}
+              </TextExtraSmall>
+              <TextStandard fontWeight="bold">{title}</TextStandard>
+              <TextPrice isProductDetail>{priceFormatted}</TextPrice>
+              <BuyButtonWrapper type="button">Comprar</BuyButtonWrapper>
             </ContentWrapper>
           </HeaderCardWrapper>
           <FooterWrapper>
-            <TextMedium>Descripcion</TextMedium>
-            <TextSmall>{description}</TextSmall>
+            <TextMedium>Descripción del producto</TextMedium>
+            <TextSmall isProductDetail>{description}</TextSmall>
           </FooterWrapper>
         </ProductCardWrapper>
       </ProductWrapper>
@@ -60,7 +66,24 @@ export const Product: FC<Props> = (props) => {
   );
 };
 
+const BreadCrumbsWrapper = styled.div`
+  display: flex;
+  padding: 1rem 0;
+`;
+
+const BreadCrumbWrapper = styled.p`
+  color: ${({ theme }) => theme.colors?.grayLight};
+  cursor: pointer;
+  padding-right: 0.5rem;
+  &:not(:last-child):after {
+    content: ">";
+    cursor: auto;
+    padding-left: 0.5rem;
+  }
+`;
+
 const ProductWrapper = styled.div`
+  background-color: ${({ theme }) => theme.colors?.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,17 +105,25 @@ const HeaderCardWrapper = styled.header`
   flex-direction: column-reverse;
   ${breakpoint.tablet`
     flex-direction: row;
+    margin-bottom: 3rem;
   `}
 `;
 
-const SideBarWrapper = styled.div``;
+const SideBarWrapper = styled.div`
+  ${breakpoint.tablet`
+    height: 700px;
+    margin: 0 2rem;
+    position: relative;
+    width: 70%;
+  `}
+`;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   ${breakpoint.tablet`
     margin: 0 2rem;
-    min-width: 170px;
+    width: calc(30% - 2rem);
   `}
 `;
 
@@ -100,4 +131,20 @@ const FooterWrapper = styled.div`
   display: flex;
   padding: 1rem 0;
   flex-direction: column;
+  ${breakpoint.tablet`
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    margin-rigth: 2rem;
+    width: calc(70% - 2rem);
+  `}
+`;
+
+const BuyButtonWrapper = styled.button`
+  background-color: ${({ theme }) => theme.colors?.hover};
+  border: none;
+  border-radius: 0.5rem;
+  color: ${({ theme }) => theme.colors?.white};
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 1rem 0;
 `;

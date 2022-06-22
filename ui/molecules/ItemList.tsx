@@ -3,11 +3,12 @@ import styled from "styled-components";
 
 export const ItemList = ({ dropdownResults, handleItemSelected }: any) => {
   const { items } = dropdownResults;
-
-  return items.map((item: any) => (
-    <StyledAnchor key={item.id}>
-      <DropdownMenuItemAutoComplete onClick={() => handleItemSelected(item.id)}>
-        <div>{item.title}</div>
+  return items?.map((item: any) => (
+    <StyledAnchor key={item?.id}>
+      <DropdownMenuItemAutoComplete
+        onClick={() => handleItemSelected(item?.id)}
+      >
+        <div>{item?.title}</div>
       </DropdownMenuItemAutoComplete>
     </StyledAnchor>
   ));
@@ -28,13 +29,13 @@ const DropdownMenuItemAutoComplete = styled.div`
     text-overflow: ellipsis;
   }
   :hover {
-    background-color: #3483fa;
-    color: white;
+    background-color: ${({ theme }) => theme.colors?.hover};
+    color: ${({ theme }) => theme.colors?.white};
   }
 `;
 
 const StyledAnchor = styled.a`
-  height: 100% !important;
+  height: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;

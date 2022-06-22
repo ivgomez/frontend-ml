@@ -20,8 +20,9 @@ export const Autocomplete = ({
   const [isInputFocus, setIsInputFocus] = useState(false);
   const [dropdownResults, setDropdownResults] = useState([]);
 
-  //If clicked outside of the searchbar, close the dropdown
   const ref = useRef();
+
+  /*If clicked outside of the searchbar, close the dropdown*/
   useOutsideClick(ref, () => setIsInputFocus(false));
 
   const fetchDropdownResults = (textValue: string) => {
@@ -39,7 +40,6 @@ export const Autocomplete = ({
       })
       .catch((e) => {
         if (!axios.isCancel(e)) {
-          // eslint-disable-next-line no-console
           console.error(
             "Error while getting & manipulating autocomplete content - ",
             e
