@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 export const ItemList = ({
+  onMouseHover,
   selectedIndex,
   dropdownResults,
   handleItemSelected,
@@ -10,11 +11,13 @@ export const ItemList = ({
   const selectedItem = items[selectedIndex];
   return items?.map((item: any) => {
     const isCurrentIndex = item == selectedItem;
+    const id = item?.id;
     return (
       <StyledAnchor key={item?.id}>
         <DropdownMenuItemAutoComplete
           isCurrentIndex={isCurrentIndex}
-          onClick={() => handleItemSelected(item?.id)}
+          onMouseEnter={() => onMouseHover(id)}
+          onClick={() => handleItemSelected(id)}
         >
           <div>{item?.title}</div>
         </DropdownMenuItemAutoComplete>
@@ -34,10 +37,7 @@ const DropdownMenuItemAutoComplete = styled.div<any>`
   padding: 10px 20px;
 
   background-color: ${({ theme, isCurrentIndex }) =>
-    isCurrentIndex ? theme.colors?.hover : theme.colors?.white};
-
-  color: ${({ theme, isCurrentIndex }) =>
-    isCurrentIndex && theme.colors?.white};
+    isCurrentIndex ? theme.colors?.hoverLight : theme.colors?.white};
 
   :hover {
     background-color: ${({ theme }) => theme.colors?.hover};

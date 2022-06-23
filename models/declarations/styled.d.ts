@@ -9,6 +9,7 @@ type layerType = {
   grayLight: string;
   white: string;
   hover: string;
+  hoverLight: string;
 };
 
 type fontsType = {

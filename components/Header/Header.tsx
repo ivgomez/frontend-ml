@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { breakpoint } from "@theme";
-import { LogoSection } from "../atoms";
-import { Autocomplete } from "./Autocomplete";
+import { LogoSection } from "../../ui/atoms";
+import { Autocomplete } from "../Autocomplete/Autocomplete";
 
 export const Header = () => {
   const [isSearching, setIsSearching] = useState(false);

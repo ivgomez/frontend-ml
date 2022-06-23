@@ -11,6 +11,7 @@ theme.colors = {
   grayLight: "#999999",
   white: "#FFFFFF",
   hover: "#3483fa",
+  hoverLight: "#e3ecfa",
 };
 
 /* CSS Grids template */

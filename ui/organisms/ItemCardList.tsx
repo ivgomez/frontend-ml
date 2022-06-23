@@ -7,7 +7,7 @@ interface Props {
   items: Item[];
 }
 
-export const ItemList: FC<Props> = ({ items }) => {
+export const ItemCardList: FC<Props> = ({ items }) => {
   return (
     <ItemListWrapper>
       {items?.map((item: Item) => (

@@ -14,7 +14,7 @@ export const ItemCard: FC<Props> = ({ item }) => {
   const { amount, currency, decimals } = price;
   const priceFormatted = formatCurrency(amount, currency, decimals);
   return (
-    <Link href={`/${id}`}>
+    <Link href={`details/${id}`}>
       <ItemCardWrapper>
         <LeftRow>
           <ImageWrapper>

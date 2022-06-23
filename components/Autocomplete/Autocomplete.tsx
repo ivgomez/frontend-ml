@@ -6,8 +6,9 @@ import styled from "styled-components";
 import { debounce, isEmpty, size } from "lodash";
 import api from "@api";
 import { InputSearch } from "@ui/molecules";
-import { ItemList } from "@ui/molecules/ItemList";
+import { ItemList } from "./components/ItemList";
 import { useOutsideClick } from "@utils/hooks/useOutsideClick";
+import { Item } from "@models/responseModel/Item";
 
 const MIN_SEARCH_VALUE = 2;
 const KEY_UP = 38;
@@ -80,15 +81,15 @@ export const Autocomplete = ({
     !isSearching &&
     size(dropdownResults) > 0;
 
-  const restoreKeys = () => {
+  const restorePropsState = () => {
     setIsSearching(false);
     setSearchValue("");
     setIsInputFocus(false);
   };
 
   const handleItemSelected = (id: string) => {
-    router.push(`/${id}`);
-    restoreKeys();
+    router.push(`details/${id}`);
+    restorePropsState();
   };
 
   const nextIndex = () => {
@@ -131,10 +132,17 @@ export const Autocomplete = ({
     }
   };
 
-  const handleSearch = (e: any) => {
+  const handleSearch = () => {
     if (!searchValue) return;
     router.push(`/?q=${searchValue}`);
-    restoreKeys();
+    restorePropsState();
+  };
+
+  const onMouseHover = (id: string) => {
+    const { items } = dropdownResults || [];
+    if (!items?.length) return;
+    const idx = items.findIndex((item: Item) => item.id === id);
+    setSelectedIndex(idx);
   };
 
   return (
@@ -145,6 +153,7 @@ export const Autocomplete = ({
         placeholder={placeholder}
         handleSearch={handleSearch}
         onChange={handleInputChange}
+        onFocus={() => setIsInputFocus(true)}
       />
       {isSearching ? (
         <SearchDropdownWrapper>
@@ -156,6 +165,7 @@ export const Autocomplete = ({
             <ItemList
               selectedIndex={selectedIndex}
               dropdownResults={dropdownResults}
+              onMouseHover={onMouseHover}
               handleItemSelected={handleItemSelected}
             />
           </ResultDropdown>

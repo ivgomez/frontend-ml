@@ -13,6 +13,7 @@ import {
 } from "@ui/atoms/Text";
 import { Item } from "@models/responseModel/Item";
 import { formatCurrency } from "@utils/helpers/formatterHelper";
+import { Breadcrumbs } from "@ui/molecules";
 
 interface Props {
   response: {
@@ -25,16 +26,17 @@ export const Product: FC<Props> = (props) => {
   const {
     response: { item },
   } = props;
+  const items = [
+    "Electrónica, audio y video",
+    "Celulares y telefonía",
+    "Reproductores",
+  ];
   const { description, condition, title, picture, price } = item;
   const { amount, currency } = price;
   const priceFormatted = formatCurrency(amount, currency);
   return (
     <Layout>
-      <BreadCrumbsWrapper>
-        <BreadCrumbWrapper>Electrónica, audio y video</BreadCrumbWrapper>
-        <BreadCrumbWrapper>iPod</BreadCrumbWrapper>
-        <BreadCrumbWrapper>Reproductores</BreadCrumbWrapper>
-      </BreadCrumbsWrapper>
+      <Breadcrumbs items={items} />
       <ProductWrapper>
         <ProductCardWrapper>
           <HeaderCardWrapper>
@@ -65,22 +67,6 @@ export const Product: FC<Props> = (props) => {
     </Layout>
   );
 };
-
-const BreadCrumbsWrapper = styled.div`
-  display: flex;
-  padding: 1rem 0;
-`;
-
-const BreadCrumbWrapper = styled.p`
-  color: ${({ theme }) => theme.colors?.grayLight};
-  cursor: pointer;
-  padding-right: 0.5rem;
-  &:not(:last-child):after {
-    content: ">";
-    cursor: auto;
-    padding-left: 0.5rem;
-  }
-`;
 
 const ProductWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors?.white};

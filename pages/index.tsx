@@ -7,7 +7,7 @@ const SearchPage: NextPage = (props) => {
   return (
     <>
       <Head>
-        <title>Search</title>
+        <title>Home</title>
       </Head>
       <Search {...props} />
     </>

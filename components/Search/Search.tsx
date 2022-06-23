@@ -2,16 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { Layout } from "@components/Layout/Layout";
 import { SearchResponse } from "@models/responseModel/SearchResponse";
-import { ItemList } from "@ui/organisms";
+import { ItemCardList } from "@ui/organisms";
+import { Breadcrumbs } from "@ui/molecules/Breadcrumbs";
 
 export const Search = (props: any) => {
   const { response } = props;
-  const { items = [] }: SearchResponse = response;
+  const { items = [], categories = [] }: SearchResponse = response;
 
   return (
     <Layout>
+      <Breadcrumbs items={categories} />
       <SearchSectionWrapper>
-        <ItemList items={items} />
+        <ItemCardList items={items} />
       </SearchSectionWrapper>
     </Layout>
   );
