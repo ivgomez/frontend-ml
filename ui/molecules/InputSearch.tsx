@@ -4,11 +4,12 @@ import { SearchButton } from "../atoms/SearchButton";
 import React from "react";
 
 export const InputSearch = (props: any) => {
+  const { handleSearch } = props;
   const icon = "/static/images/icons/iconSearch.png";
   return (
     <InputSearchWrapper>
       <Input {...props} />
-      <SearchButton icon={icon} />
+      <SearchButton icon={icon} handleSearch={handleSearch} />
     </InputSearchWrapper>
   );
 };

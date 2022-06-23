@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useCallback } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -8,7 +9,10 @@ import { InputSearch } from "@ui/molecules";
 import { ItemList } from "@ui/molecules/ItemList";
 import { useOutsideClick } from "@utils/hooks/useOutsideClick";
 
-const minSearchValueLength = 2;
+const MIN_SEARCH_VALUE = 2;
+const KEY_UP = 38;
+const KEY_DOWN = 40;
+const KEY_ENTER = 13;
 
 export const Autocomplete = ({
   isSearching,
@@ -17,13 +21,17 @@ export const Autocomplete = ({
 }: any) => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [isInputFocus, setIsInputFocus] = useState(false);
-  const [dropdownResults, setDropdownResults] = useState([]);
+  const [dropdownResults, setDropdownResults] = useState<any>();
 
   const ref = useRef();
 
   /*If clicked outside of the searchbar, close the dropdown*/
-  useOutsideClick(ref, () => setIsInputFocus(false));
+  useOutsideClick(ref, () => {
+    setIsInputFocus(false);
+    setSelectedIndex(0);
+  });
 
   const fetchDropdownResults = (textValue: string) => {
     setIsSearching(true);
@@ -61,7 +69,7 @@ export const Autocomplete = ({
     const textToken = e.target.value;
     setSearchValue(textToken);
     setIsInputFocus(true);
-    if (textToken.length >= minSearchValueLength) {
+    if (textToken.length >= MIN_SEARCH_VALUE) {
       getAutoCompleteSuggestions(textToken);
     }
   };
@@ -72,19 +80,71 @@ export const Autocomplete = ({
     !isSearching &&
     size(dropdownResults) > 0;
 
-  const handleItemSelected = async (item: string) => {
-    router.push(`/${item}`);
+  const restoreKeys = () => {
     setIsSearching(false);
     setSearchValue("");
     setIsInputFocus(false);
   };
 
+  const handleItemSelected = (id: string) => {
+    router.push(`/${id}`);
+    restoreKeys();
+  };
+
+  const nextIndex = () => {
+    let nextIndex = selectedIndex + 1;
+    if (nextIndex >= size(dropdownResults)) {
+      nextIndex = 0;
+    }
+    setSelectedIndex(nextIndex);
+  };
+
+  const previousIndex = () => {
+    let prevIndex = selectedIndex - 1;
+    if (prevIndex < 0) {
+      prevIndex = size(dropdownResults) - 1;
+    }
+    setSelectedIndex(prevIndex);
+  };
+
+  const handleKeyUp = (e: any) => {
+    const { items } = dropdownResults || [];
+
+    if (!items?.length) return;
+
+    const keyCode = e.keyCode;
+    const selectedItem = items[selectedIndex];
+
+    switch (keyCode) {
+      case KEY_UP:
+        previousIndex();
+        break;
+      case KEY_DOWN:
+        nextIndex();
+        break;
+      case KEY_ENTER:
+        if (!selectedItem) {
+          return;
+        }
+        handleItemSelected(selectedItem?.id);
+        break;
+    }
+  };
+
+  const handleSearch = (e: any) => {
+    if (!searchValue) return;
+    router.push(`/?q=${searchValue}`);
+    restoreKeys();
+  };
+
   return (
     <SearchBox ref={ref}>
       <InputSearch
-        onChange={handleInputChange}
         value={searchValue}
+        onKeyDown={handleKeyUp}
         placeholder={placeholder}
+        handleSearch={handleSearch}
+        onChange={handleInputChange}
       />
       {isSearching ? (
         <SearchDropdownWrapper>
@@ -94,6 +154,7 @@ export const Autocomplete = ({
         isDropDownVisible && (
           <ResultDropdown>
             <ItemList
+              selectedIndex={selectedIndex}
               dropdownResults={dropdownResults}
               handleItemSelected={handleItemSelected}
             />
@@ -128,9 +189,6 @@ const NoResultItem = styled.div`
   flex-direction: column;
   text-align: start;
   background-color: ${({ theme }) => theme.colors?.white};
-  b {
-    font-weight: bold;
-  }
 `;
 
 const ResultDropdown = styled.div`

@@ -2,8 +2,8 @@
 import React from "react";
 import styled from "styled-components";
 
-export const SearchButton = ({ icon, children }: any) => (
-  <SearchButtonWrapper>
+export const SearchButton = ({ icon, children, handleSearch }: any) => (
+  <SearchButtonWrapper onClick={handleSearch}>
     {icon && (
       <IconWrapper>
         <img src={icon} alt="search" data-e2e-brand="search" />
@@ -19,11 +19,9 @@ const SearchButtonWrapper = styled.button`
   width: 50px;
   border: 0;
   border-radius: 0 4px 4px 0;
+  cursor: pointer;
 `;
 
 const IconWrapper = styled.span`
   margin-right: 1rem;
-  @media (max-width: 551px) {
-    margin-right: 0;
-  }
 `;
