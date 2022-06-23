@@ -75,7 +75,10 @@ const ProductWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  padding: 2rem 0;
+  padding: 2rem;
+  ${breakpoint.laptop`
+    padding: 2rem 0;
+  `}
 `;
 
 const ProductCardWrapper = styled.section`
@@ -88,26 +91,33 @@ const ProductCardWrapper = styled.section`
 
 const HeaderCardWrapper = styled.header`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   ${breakpoint.tablet`
     flex-direction: row;
+  `}
+  ${breakpoint.laptop`
     margin-bottom: 3rem;
   `}
 `;
 
 const SideBarWrapper = styled.div`
+  position: relative;
+  height: 380px;
+  margin-bottom: 1rem;
   ${breakpoint.tablet`
+    height: 500px;
+    width: 100%;
+    margin-right: 2rem;
+  `}
+  ${breakpoint.laptop`
     height: 700px;
-    margin: 0 2rem;
-    position: relative;
-    width: 70%;
   `}
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  ${breakpoint.tablet`
+  ${breakpoint.laptop`
     margin: 0 2rem;
     width: calc(30% - 2rem);
   `}
@@ -117,10 +127,10 @@ const FooterWrapper = styled.div`
   display: flex;
   padding: 1rem 0;
   flex-direction: column;
-  ${breakpoint.tablet`
+  ${breakpoint.laptop`
     padding-left: 2rem;
     margin-bottom: 2rem;
-    margin-rigth: 2rem;
+    margin-right: 2rem;
     width: calc(70% - 2rem);
   `}
 `;
@@ -132,5 +142,11 @@ const BuyButtonWrapper = styled.button`
   color: ${({ theme }) => theme.colors?.white};
   cursor: pointer;
   font-size: 1rem;
+  margin-top: 1rem;
   padding: 1rem 0;
+
+  ${breakpoint.tablet`
+    margin-top: 0;
+    margin-bottom: 2rem;
+  `}
 `;

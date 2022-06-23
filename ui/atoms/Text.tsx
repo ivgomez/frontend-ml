@@ -6,6 +6,7 @@ interface ITextBase {
   fontWeight?: string;
   isProductDetail?: any;
   theme?: any;
+  color?: string;
 }
 
 export const TextMedium = styled(TextBase)`
@@ -34,6 +35,7 @@ export const TextSmall = styled(TextBase)<ITextBase>`
   font-size: ${({ theme }) => theme.convert.px.rem(14)};
   line-height: 1.57;
   letter-spacing: 0.3px;
+  color: ${({ color }) => color};
   ${breakpoint.tablet`
     font-size:  ${({ isProductDetail }: ITextBase) =>
       isProductDetail && "1rem"};

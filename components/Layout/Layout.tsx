@@ -24,6 +24,9 @@ const Main = styled.main`
   flex: 1;
   background-color: ${({ theme }) => theme.colors?.secondary};
   ${breakpoint.laptop`
-    padding: 0 10rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    left: 0;
+    right:0;    
   `}
 `;

@@ -6,6 +6,7 @@ export default styled.createGlobalStyle`
   }
   html,
   body {
+    background-color: ${({ theme }) => theme.colors?.secondary};
     padding: 0;
     margin: 0;
     font-family: "Barlow Semi Condensed", sans-serif, -apple-system,

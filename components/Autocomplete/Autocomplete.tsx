@@ -141,7 +141,7 @@ export const Autocomplete = ({
   const onMouseHover = (id: string) => {
     const { items } = dropdownResults || [];
     if (!items?.length) return;
-    const idx = items.findIndex((item: Item) => item.id === id);
+    const idx = items.findIndex((item: Item) => item?.id === id);
     setSelectedIndex(idx);
   };
 
