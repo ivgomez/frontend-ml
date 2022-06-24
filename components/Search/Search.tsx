@@ -21,7 +21,7 @@ export const Search = (props: any) => {
 };
 
 const SearchSectionWrapper = styled.section`
-  padding: 50px 0;
+  padding: 0 0 50px 0;
   height: 100%;
   width: 100%;
 `;
