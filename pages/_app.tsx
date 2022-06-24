@@ -1,8 +1,11 @@
-import { ThemeProvider } from "styled-components";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
+import { ThemeProvider } from "styled-components";
+import NextNProgress from "nextjs-progressbar";
 import getPageContext from "../lib/getPageContext";
 import GlobalStyles from "../lib/GlobalStyles";
+import ErrorBoundary from "@components/Global/ErrorBoundary";
+
 const DynamicGlobalFonts = dynamic(() => import("../public/fonts/fontStyles"), {
   ssr: false,
 });
@@ -13,7 +16,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={pageContext.theme}>
       <GlobalStyles />
       <DynamicGlobalFonts />
-      <Component {...pageProps} />
+      <ErrorBoundary>
+        <NextNProgress />
+        <Component {...pageProps} />
+      </ErrorBoundary>
     </ThemeProvider>
   );
 }

@@ -31,8 +31,8 @@ export const Product: FC<Props> = (props) => {
     "Celulares y telefonía",
     "Reproductores",
   ];
-  const { description, condition, title, picture, price } = item;
-  const { amount, currency } = price;
+  const { description, condition, title, picture, price } = item || {};
+  const { amount, currency } = price || {};
   const priceFormatted = formatCurrency(amount, currency);
   return (
     <Layout>

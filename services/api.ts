@@ -2,7 +2,7 @@ import { Service } from "./baseService";
 
 const api = {
   async search(query: string) {
-    const result = await Service().get(`/api/items?q=${query}`);
+    const result = await Service().get(`/api/items?q=${query || ""}`);
     return result;
   },
   async getItemById(id: string) {

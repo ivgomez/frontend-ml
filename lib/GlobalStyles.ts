@@ -4,6 +4,7 @@ export default styled.createGlobalStyle`
   #root {
     margin: 0 auto;
   }
+
   html,
   body {
     background-color: ${({ theme }) => theme.colors?.secondary};

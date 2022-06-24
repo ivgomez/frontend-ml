@@ -4,6 +4,7 @@ import { Layout } from "@components/Layout/Layout";
 import { SearchResponse } from "@models/responseModel/SearchResponse";
 import { ItemCardList } from "@ui/organisms";
 import { Breadcrumbs } from "@ui/molecules/Breadcrumbs";
+import { NoResultsCard } from "@ui/molecules/NoResultsCard";
 
 export const Search = (props: any) => {
   const { response } = props;
@@ -13,7 +14,7 @@ export const Search = (props: any) => {
     <Layout>
       <Breadcrumbs items={categories} />
       <SearchSectionWrapper>
-        <ItemCardList items={items} />
+        {items?.length ? <ItemCardList items={items} /> : <NoResultsCard />}
       </SearchSectionWrapper>
     </Layout>
   );
