@@ -10,6 +10,6 @@ const InputWrapper = styled.input`
   border: none;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize?.fontSize16px};
   line-height: 28px;
 `;

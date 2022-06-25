@@ -3,17 +3,20 @@ import styled from "styled-components";
 import { breakpoint } from "@theme";
 import { LogoSection } from "../../ui/atoms";
 import { Autocomplete } from "../Autocomplete/Autocomplete";
+import { useWindowSize } from "@utils/hooks";
 
 export const Header = () => {
   const [isSearching, setIsSearching] = useState(false);
+  const { isMobile } = useWindowSize();
   return (
     <GlobalHeaderWrapper>
       <MainNav>
-        <Box>
+        {!isMobile && (
           <LogoSectionContainer>
             <LogoSection />
           </LogoSectionContainer>
-        </Box>
+        )}
+        <Box></Box>
         <Autocomplete
           isSearching={isSearching}
           placeholder="nunca dejes de buscar"
@@ -47,14 +50,13 @@ const MainNav = styled.nav`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  font-size: 0.875rem;
+  font-size: ${({ theme }) => theme.convert?.px.rem(14)};
   height: 4rem;
   padding: ${({ theme }) => theme.spaces?.m};
 
-  ${breakpoint.laptop`
+  ${breakpoint.tablet`
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
     left: 0;
     right: 0;
   `}

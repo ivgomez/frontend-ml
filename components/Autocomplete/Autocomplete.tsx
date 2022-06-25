@@ -7,7 +7,7 @@ import { debounce, isEmpty, size } from "lodash";
 import api from "@api";
 import { InputSearch } from "@ui/molecules";
 import { ItemList } from "./components/ItemList";
-import { useOutsideClick } from "@utils/hooks/useOutsideClick";
+import { useOutsideClick } from "@utils/hooks";
 import { Item } from "@models/responseModel/Item";
 
 const MIN_SEARCH_VALUE = 2;
@@ -88,7 +88,7 @@ export const Autocomplete = ({
   };
 
   const handleItemSelected = (id: string) => {
-    router.push(`details/${id}`);
+    router.push(`/details/${id}`);
     restorePropsState();
   };
 
@@ -127,7 +127,7 @@ export const Autocomplete = ({
         if (!selectedItem) {
           return;
         }
-        handleItemSelected(selectedItem?.id);
+        handleSearch();
         break;
     }
   };
@@ -185,7 +185,7 @@ const SearchBox = styled.div<any>`
 `;
 
 const SearchDropdownWrapper = styled.div`
-  top: 52px;
+  top: 20px;
   width: 100%;
   position: absolute;
 `;
@@ -193,7 +193,7 @@ const SearchDropdownWrapper = styled.div`
 const NoResultItem = styled.div`
   padding: ${({ theme }) => theme.spaces?.xxs}
     ${({ theme }) => theme.spaces?.xs};
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize?.fontSize16px};
   letter-spacing: 0.3px;
   line-height: 28px;
   display: flex;
@@ -203,7 +203,7 @@ const NoResultItem = styled.div`
 `;
 
 const ResultDropdown = styled.div`
-  top: 52px;
+  top: 20px;
   width: 100%;
   z-index: 1;
   position: absolute;

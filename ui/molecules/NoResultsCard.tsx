@@ -29,7 +29,7 @@ const Container = styled.div`
 `;
 
 const UL = styled.ul`
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize?.fontSize16px};
   font-weight: 300;
   margin: ${({ theme }) => theme.spaces?.xs} ${({ theme }) => theme.spaces?.xxs};
 `;

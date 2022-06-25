@@ -14,23 +14,11 @@ theme.colors = {
   hoverLight: "#e3ecfa",
 };
 
-/* CSS Grids template */
-theme.grid = (min = 100, gap = 0) => `
-  display: grid;
-  grid-gap: ${gap}px;
-  grid-template-columns: repeat(auto-fill, minmax(${min}px, 1fr)); 
-`;
-
 theme.convert = {
   px: {
     em: (pxValue: any) => `${(pxValue / 16).toFixed(2)}em`,
     rem: (pxValue: any) => `${(pxValue / 16).toFixed(2)}rem`,
   },
-};
-
-theme.fonts = {
-  fontFamilySansSerif: "Avenir",
-  fontFamilyModernSerif: "Chronicle Display",
 };
 
 theme.fontSize = {
@@ -62,8 +50,6 @@ export const screenWidth: any = {
   laptop: "992px" /* md */,
   desktop: "1224px" /* lg */,
 };
-
-// NOTE: Nico confirmed we can update desktop breakpoint to 1200px, so it matches Bootstrap breakpoints
 
 /* For mobile-first design */
 export const breakpoint = Object.keys(screenWidth).reduce(

@@ -54,13 +54,17 @@ export const Product: FC<Props> = (props) => {
                 {capitalize(condition)}
               </TextExtraSmall>
               <TextStandard fontWeight="bold">{title}</TextStandard>
-              <TextPrice isProductDetail>{priceFormatted}</TextPrice>
-              <Button>Comprar</Button>
+              <TextPrice isProductDetail marginTop="0.5rem">
+                {priceFormatted}
+              </TextPrice>
+              <ButtonContainer>
+                <Button>Comprar</Button>
+              </ButtonContainer>
             </ContentWrapper>
           </HeaderCardWrapper>
           <FooterWrapper>
-            <TextMedium>Descripción del producto</TextMedium>
-            <TextSmall isProductDetail>{description}</TextSmall>
+            <DescriptionTitle>Descripción del producto</DescriptionTitle>
+            <DescriptionWrapper>{description}</DescriptionWrapper>
           </FooterWrapper>
         </ProductCardWrapper>
       </ProductWrapper>
@@ -75,9 +79,10 @@ const ProductWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  margin: ${({ theme }) => theme.spaces?.m};
+  padding: 0 ${({ theme }) => theme.spaces?.m};
+
   ${breakpoint.laptop`
-    padding: ${({ theme }: any) => theme.spaces?.m} 0;
+    padding: 0 ${({ theme }: any) => theme.spaces?.m};
   `}
 `;
 
@@ -92,11 +97,13 @@ const ProductCardWrapper = styled.section`
 const HeaderCardWrapper = styled.header`
   display: flex;
   flex-direction: column;
+  padding-top: ${({ theme }) => theme.spaces?.m};
   ${breakpoint.tablet`
     flex-direction: row;
   `}
   ${breakpoint.laptop`
-    margin-bottom: 3rem;
+    padding-top: 0rem;
+    margin-bottom: ${({ theme }: any) => theme.spaces?.xl};
   `}
 `;
 
@@ -107,7 +114,7 @@ const SideBarWrapper = styled.div`
   ${breakpoint.tablet`
     height: 500px;
     width: 100%;
-    margin-right: ${({ theme }: any) => theme.spaces?.m};
+    margin: 0 ${({ theme }: any) => theme.spaces?.m};
   `}
   ${breakpoint.laptop`
     height: 700px;
@@ -118,8 +125,16 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   ${breakpoint.laptop`
-    margin: 0 ${({ theme }: any) => theme.spaces?.m};
-    width: calc(30% - 2rem);
+    margin: ${({ theme }: any) => theme.spaces?.m};
+  `}
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: ${({ theme }) => theme.spaces?.m} 0;
+  ${breakpoint.laptop`
+    padding: 0;
   `}
 `;
 
@@ -135,18 +150,15 @@ const FooterWrapper = styled.div`
   `}
 `;
 
-const BuyButtonWrapper = styled.button`
-  background-color: ${({ theme }) => theme.colors?.hover};
-  border: none;
-  border-radius: 0.5rem;
-  color: ${({ theme }) => theme.colors?.white};
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: ${({ theme }: any) => theme.spaces?.xs};
-  padding: ${({ theme }: any) => theme.spaces?.xs} 0;
-
+const DescriptionWrapper = styled(TextSmall)`
   ${breakpoint.tablet`
-    margin-top: 0;
-    margin-bottom: ${({ theme }: any) => theme.spaces?.m};
-  `}
+    margin-bottom: 2rem;
+    color: ${({ theme }: any) => theme.colors?.grayLight};
+ `}
+`;
+
+const DescriptionTitle = styled(TextMedium)`
+  font-size: ${({ theme }: any) => theme.fontSize?.fontSize24px};
+  font-weight: "bold";
+  margin-bottom: ${({ theme }: any) => theme.spaces?.m};
 `;

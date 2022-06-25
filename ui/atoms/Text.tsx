@@ -8,11 +8,12 @@ interface ITextBase {
   theme?: any;
   color?: string;
   marginRight?: string;
+  marginTop?: string;
+  marginBottom?: string;
 }
 
 export const TextMedium = styled(TextBase)<ITextBase>`
   font-size: 1.125rem;
-  line-height: 1.75rem;
   letter-spacing: 0.3px;
   ${breakpoint.tablet`
     font-size:  ${({ theme }: ITextBase) => theme.fontSize?.fontSize28px};
@@ -22,7 +23,6 @@ export const TextMedium = styled(TextBase)<ITextBase>`
 
 export const TextStandard = styled(TextBase)<ITextBase>`
   font-size: 1.25rem;
-  line-height: 1.75rem;
   letter-spacing: 0.3px;
   font-weight: ${({ fontWeight }) => fontWeight};
   ${breakpoint.tablet`
@@ -63,13 +63,10 @@ export const TextSubHeader = styled(TextBase)`
 `;
 
 export const TextPrice = styled(TextBase)<ITextBase>`
-  font-size: ${({ theme }) => theme.fontSize?.fontSize24px};
+  font-size: ${({ theme }) => theme.fontSize?.fontSize28px};
   letter-spacing: 0;
+  margin-top: ${({ marginTop }) => marginTop || "0"};
+  margin-bottom: ${({ marginBottom }) => marginBottom || "0"};
   margin-right: ${({ marginRight }) => marginRight || "0"};
-  ${breakpoint.tablet`
-    font-size: ${({ isProductDetail, theme }: ITextBase) =>
-      isProductDetail && theme.fontSize?.fontSize46px};
-    margin-bottom: ${({ isProductDetail }: ITextBase) =>
-      isProductDetail && `${({ theme }: any) => theme.spaces?.m}`};
-  `}
+  margin-right: ${({ marginRight }) => marginRight || "0"};
 `;

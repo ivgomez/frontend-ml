@@ -30,7 +30,7 @@ export const ItemCard: FC<Props> = ({ item }) => {
 
         <InfoSection>
           <PriceSection>
-            <div>
+            <PriceInfoSection>
               <TextPrice marginRight="10px">{priceFormatted}</TextPrice>
               {freeShipping && (
                 <Image
@@ -42,7 +42,7 @@ export const ItemCard: FC<Props> = ({ item }) => {
                   quality={100}
                 />
               )}
-            </div>
+            </PriceInfoSection>
             <div>
               <LocationSection>
                 <TextExtraSmall>{location}</TextExtraSmall>
@@ -96,4 +96,12 @@ const PriceSection = styled.div`
     flex-direction: row;
     justify-content: space-between;
   `}
+`;
+
+const PriceInfoSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: baseline;
+  margin-top: ${({ theme }) => theme.spaces?.xs};
 `;

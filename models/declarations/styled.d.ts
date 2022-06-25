@@ -21,7 +21,6 @@ declare module "styled-components" {
   export interface DefaultTheme {
     colors?: layerType;
     convert?: any;
-    grid?: (min: number, gap: number) => string;
 
     fonts?: {
       fontFamilySansSerif: string;

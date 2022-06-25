@@ -14,24 +14,24 @@ export const ItemList = ({
     const id = item?.id;
     return (
       <StyledAnchor key={item?.id}>
-        <DropdownMenuItemAutoComplete
+        <DropdownItemAutoComplete
           isCurrentIndex={isCurrentIndex}
           onMouseEnter={() => onMouseHover(id)}
           onClick={() => handleItemSelected(id)}
         >
           <div>{item?.title}</div>
-        </DropdownMenuItemAutoComplete>
+        </DropdownItemAutoComplete>
       </StyledAnchor>
     );
   });
 };
 
-const DropdownMenuItemAutoComplete = styled.div<any>`
+const DropdownItemAutoComplete = styled.div<any>`
   display: flex;
   align-items: center;
-  height: 50px;
+  min-height: 3rem;
   width: 100%;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize?.fontSize16px};
   letter-spacing: 0.3px;
   line-height: 20px;
   padding: 10px 20px;

@@ -22,6 +22,7 @@ const LayoutWrapper = styled.div`
 
 const Main = styled.main`
   flex: 1;
+  margin: 0 2rem;
   background-color: ${({ theme }) => theme.colors?.secondary};
   ${breakpoint.laptop`
     max-width: 1200px;
