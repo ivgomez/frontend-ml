@@ -49,7 +49,7 @@ const MainNav = styled.nav`
   margin: 0 auto;
   font-size: 0.875rem;
   height: 4rem;
-  padding: 2rem;
+  padding: ${({ theme }) => theme.spaces?.m};
 
   ${breakpoint.laptop`
     max-width: 1200px;

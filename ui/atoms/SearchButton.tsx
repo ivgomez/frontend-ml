@@ -23,5 +23,5 @@ const SearchButtonWrapper = styled.button`
 `;
 
 const IconWrapper = styled.span`
-  margin-right: 1rem;
+  margin-right: ${({ theme }) => theme.spaces?.xs};
 `;

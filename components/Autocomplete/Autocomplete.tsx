@@ -191,7 +191,8 @@ const SearchDropdownWrapper = styled.div`
 `;
 
 const NoResultItem = styled.div`
-  padding: 0.5rem 1rem;
+  padding: ${({ theme }) => theme.spaces?.xxs}
+    ${({ theme }) => theme.spaces?.xs};
   font-size: 16px;
   letter-spacing: 0.3px;
   line-height: 28px;
@@ -206,4 +207,5 @@ const ResultDropdown = styled.div`
   width: 100%;
   z-index: 1;
   position: absolute;
+  border-top: thin solid #eee;
 `;

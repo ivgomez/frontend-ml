@@ -39,7 +39,6 @@ declare module "styled-components" {
     };
 
     spaces?: {
-      none: string;
       xxxs: string;
       xxs: string;
       xs: string;

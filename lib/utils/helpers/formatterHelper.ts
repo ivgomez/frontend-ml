@@ -8,8 +8,8 @@
  * @return {string}
  */
 export const formatCurrency = (
-  amount: number,
-  currency: string,
+  amount: number = 0,
+  currency: string = "ARG",
   decimals: number = 0,
   zone?: string
 ) =>

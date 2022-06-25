@@ -21,17 +21,17 @@ export const NoResultsCard = () => {
 };
 
 const Container = styled.div`
-  margin: 48px auto;
+  margin: ${({ theme }) => theme.spaces?.xl} auto;
   max-width: 1018px;
   min-height: 204px;
-  padding: 42px 40px 32px;
+  padding: ${({ theme }) => theme.spaces?.l} ${({ theme }) => theme.spaces?.m};
   background-color: #fff;
 `;
 
 const UL = styled.ul`
   font-size: 16px;
   font-weight: 300;
-  margin: 18px 10px 10px 0;
+  margin: ${({ theme }) => theme.spaces?.xs} ${({ theme }) => theme.spaces?.xxs};
 `;
 
 const LI = styled.li`
@@ -39,6 +39,6 @@ const LI = styled.li`
   line-height: 1.231;
   list-style-position: outside;
   list-style-type: disc;
-  margin-bottom: 3px;
-  margin-left: 18px;
+  margin-bottom: ${({ theme }) => theme.spaces?.xxxs};
+  margin-left: ${({ theme }) => theme.spaces?.xs};
 `;

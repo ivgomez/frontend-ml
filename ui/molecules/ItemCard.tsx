@@ -5,69 +5,95 @@ import styled from "styled-components";
 import { TextSmall, TextPrice, TextExtraSmall } from "@ui/atoms/Text";
 import { Item } from "@models/responseModel/Item";
 import { formatCurrency } from "@utils/helpers/formatterHelper";
+import { breakpoint } from "@theme";
 interface Props {
   item: Item;
 }
 
 export const ItemCard: FC<Props> = ({ item }) => {
-  const { id, title, price, picture, location } = item;
-  const { amount, currency, decimals } = price;
+  const { id, title, price, picture, location, freeShipping } = item || {};
+  const { amount, currency, decimals } = price || {};
   const priceFormatted = formatCurrency(amount, currency, decimals);
   return (
     <Link href={`details/${id}`}>
       <ItemCardWrapper>
-        <LeftRow>
-          <ImageWrapper>
-            <Image
-              layout="fixed"
-              src={picture}
-              alt="produdct"
-              width={100}
-              height={100}
-              quality={100}
-            />
-          </ImageWrapper>
+        <ImageSection>
+          <Image
+            layout="fixed"
+            src={picture}
+            alt="produdct"
+            width={180}
+            height={180}
+            quality={100}
+          />
+        </ImageSection>
 
-          <InfoWrapper>
-            <TextPrice>{priceFormatted}</TextPrice>
-            <TextSmall>{title}</TextSmall>
-          </InfoWrapper>
-        </LeftRow>
-        <LocationWrapper>
-          <TextExtraSmall>{location}</TextExtraSmall>
-        </LocationWrapper>
+        <InfoSection>
+          <PriceSection>
+            <div>
+              <TextPrice marginRight="10px">{priceFormatted}</TextPrice>
+              {freeShipping && (
+                <Image
+                  layout="fixed"
+                  src="/static/images/icons/iconShipping.png"
+                  alt="produdct"
+                  width={20}
+                  height={20}
+                  quality={100}
+                />
+              )}
+            </div>
+            <div>
+              <LocationSection>
+                <TextExtraSmall>{location}</TextExtraSmall>
+              </LocationSection>
+            </div>
+          </PriceSection>
+          <TextSmall>{title}</TextSmall>
+        </InfoSection>
       </ItemCardWrapper>
     </Link>
   );
 };
 
 const ItemCardWrapper = styled.div`
+  flex: 1;
   width: 100%;
-  height: 150px;
   display: flex;
-  align-items: center;
-  padding: 10px;
+  height: 150px;
   cursor: pointer;
-  justify-content: space-between;
   border-bottom: thin solid #eee;
 `;
 
-const LeftRow = styled.div`
+const InfoSection = styled.div`
   display: flex;
-`;
-
-const InfoWrapper = styled.div`
-  display: flex;
-  padding: 10px;
+  padding-top: ${({ theme }) => theme.spaces?.xs};
+  width: 100%;
   min-width: 120px;
   flex-direction: column;
 `;
 
-const ImageWrapper = styled.div`
-  padding: 10px;
+const ImageSection = styled.div`
+  padding: ${({ theme }) => theme.spaces?.xs};
+  span {
+    border-radius: 4px;
+  }
 `;
 
-const LocationWrapper = styled.div`
+const LocationSection = styled.div`
   min-width: 120px;
-  padding: 0 50px;
+  ${breakpoint.tablet`
+    padding: 0 50px;
+  `}
+`;
+
+const PriceSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  margin-bottom: ${({ theme }) => theme.spaces?.m};
+  ${breakpoint.tablet`
+    flex-direction: row;
+    justify-content: space-between;
+  `}
 `;

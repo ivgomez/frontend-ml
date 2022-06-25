@@ -11,7 +11,7 @@ export const ItemCardList: FC<Props> = ({ items }) => {
   return (
     <ItemListWrapper>
       {items?.map((item: Item) => (
-        <ItemCard key={item.id} item={item} />
+        <ItemCard key={item?.id} item={item} />
       ))}
     </ItemListWrapper>
   );

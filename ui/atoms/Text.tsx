@@ -7,9 +7,10 @@ interface ITextBase {
   isProductDetail?: any;
   theme?: any;
   color?: string;
+  marginRight?: string;
 }
 
-export const TextMedium = styled(TextBase)`
+export const TextMedium = styled(TextBase)<ITextBase>`
   font-size: 1.125rem;
   line-height: 1.75rem;
   letter-spacing: 0.3px;
@@ -64,10 +65,11 @@ export const TextSubHeader = styled(TextBase)`
 export const TextPrice = styled(TextBase)<ITextBase>`
   font-size: ${({ theme }) => theme.fontSize?.fontSize24px};
   letter-spacing: 0;
+  margin-right: ${({ marginRight }) => marginRight || "0"};
   ${breakpoint.tablet`
     font-size: ${({ isProductDetail, theme }: ITextBase) =>
       isProductDetail && theme.fontSize?.fontSize46px};
     margin-bottom: ${({ isProductDetail }: ITextBase) =>
-      isProductDetail && "2rem"};
+      isProductDetail && `${({ theme }: any) => theme.spaces?.m}`};
   `}
 `;

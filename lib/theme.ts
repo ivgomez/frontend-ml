@@ -45,7 +45,6 @@ theme.fontSize = {
 
 // spacing -> margin - padding
 theme.spaces = {
-  none: "0px",
   xxxs: "4px",
   xxs: "8px",
   xs: "16px",

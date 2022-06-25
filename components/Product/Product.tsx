@@ -13,14 +13,14 @@ import {
 } from "@ui/atoms/Text";
 import { Item } from "@models/responseModel/Item";
 import { formatCurrency } from "@utils/helpers/formatterHelper";
-import { Breadcrumbs } from "@ui/molecules";
+import { Breadcrumbs, Button } from "@ui/molecules";
 
-interface Props {
+type Props = {
   response: {
     item: Item;
   };
   query: string;
-}
+};
 
 export const Product: FC<Props> = (props) => {
   const {
@@ -55,7 +55,7 @@ export const Product: FC<Props> = (props) => {
               </TextExtraSmall>
               <TextStandard fontWeight="bold">{title}</TextStandard>
               <TextPrice isProductDetail>{priceFormatted}</TextPrice>
-              <BuyButtonWrapper type="button">Comprar</BuyButtonWrapper>
+              <Button>Comprar</Button>
             </ContentWrapper>
           </HeaderCardWrapper>
           <FooterWrapper>
@@ -75,9 +75,9 @@ const ProductWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  padding: 2rem;
+  margin: ${({ theme }) => theme.spaces?.m};
   ${breakpoint.laptop`
-    padding: 2rem 0;
+    padding: ${({ theme }: any) => theme.spaces?.m} 0;
   `}
 `;
 
@@ -103,11 +103,11 @@ const HeaderCardWrapper = styled.header`
 const SideBarWrapper = styled.div`
   position: relative;
   height: 380px;
-  margin-bottom: 1rem;
+  margin-bottom: ${({ theme }) => theme.spaces?.xs};
   ${breakpoint.tablet`
     height: 500px;
     width: 100%;
-    margin-right: 2rem;
+    margin-right: ${({ theme }: any) => theme.spaces?.m};
   `}
   ${breakpoint.laptop`
     height: 700px;
@@ -118,19 +118,19 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   ${breakpoint.laptop`
-    margin: 0 2rem;
+    margin: 0 ${({ theme }: any) => theme.spaces?.m};
     width: calc(30% - 2rem);
   `}
 `;
 
 const FooterWrapper = styled.div`
   display: flex;
-  padding: 1rem 0;
+  padding: ${({ theme }) => theme.spaces?.xs} 0;
   flex-direction: column;
   ${breakpoint.laptop`
-    padding-left: 2rem;
-    margin-bottom: 2rem;
-    margin-right: 2rem;
+    padding-left: ${({ theme }: any) => theme.spaces?.m};
+    margin-bottom: ${({ theme }: any) => theme.spaces?.m};
+    margin-right: ${({ theme }: any) => theme.spaces?.m};
     width: calc(70% - 2rem);
   `}
 `;
@@ -142,11 +142,11 @@ const BuyButtonWrapper = styled.button`
   color: ${({ theme }) => theme.colors?.white};
   cursor: pointer;
   font-size: 1rem;
-  margin-top: 1rem;
-  padding: 1rem 0;
+  margin-top: ${({ theme }: any) => theme.spaces?.xs};
+  padding: ${({ theme }: any) => theme.spaces?.xs} 0;
 
   ${breakpoint.tablet`
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: ${({ theme }: any) => theme.spaces?.m};
   `}
 `;
