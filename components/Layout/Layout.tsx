@@ -22,11 +22,12 @@ const LayoutWrapper = styled.div`
 
 const Main = styled.main`
   flex: 1;
-  margin: 0 2rem;
+  margin: 0 1rem;
+  padding-bottom: ${({ theme }: any) => theme.spaces?.xl};
   background-color: ${({ theme }) => theme.colors?.secondary};
-  ${breakpoint.laptop`
+  ${breakpoint.desktop`
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto;   
     left: 0;
     right:0;    
   `}

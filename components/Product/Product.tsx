@@ -18,25 +18,22 @@ import { Breadcrumbs, Button } from "@ui/molecules";
 type Props = {
   response: {
     item: Item;
+    categories: string[];
   };
   query: string;
 };
 
 export const Product: FC<Props> = (props) => {
   const {
-    response: { item },
+    response: { item, categories = [] },
   } = props;
-  const items = [
-    "Electrónica, audio y video",
-    "Celulares y telefonía",
-    "Reproductores",
-  ];
+
   const { description, condition, title, picture, price } = item || {};
   const { amount, currency } = price || {};
   const priceFormatted = formatCurrency(amount, currency);
   return (
     <Layout>
-      <Breadcrumbs items={items} />
+      <Breadcrumbs items={categories} />
       <ProductWrapper>
         <ProductCardWrapper>
           <HeaderCardWrapper>
@@ -141,18 +138,17 @@ const ButtonContainer = styled.div`
 const FooterWrapper = styled.div`
   display: flex;
   padding: ${({ theme }) => theme.spaces?.xs} 0;
+  padding-bottom: 0;
   flex-direction: column;
   ${breakpoint.laptop`
-    padding-left: ${({ theme }: any) => theme.spaces?.m};
-    margin-bottom: ${({ theme }: any) => theme.spaces?.m};
     margin-right: ${({ theme }: any) => theme.spaces?.m};
     width: calc(70% - 2rem);
   `}
 `;
 
 const DescriptionWrapper = styled(TextSmall)`
+  margin-bottom: ${({ theme }) => theme.spaces?.m};
   ${breakpoint.tablet`
-    margin-bottom: 2rem;
     color: ${({ theme }: any) => theme.colors?.grayLight};
  `}
 `;
