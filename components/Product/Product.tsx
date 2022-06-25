@@ -14,6 +14,7 @@ import {
 import { Item } from "@models/responseModel/Item";
 import { formatCurrency } from "@utils/helpers/formatterHelper";
 import { Breadcrumbs, Button } from "@ui/molecules";
+import ErrorBoundary from "@components/Global/ErrorBoundary";
 
 type Props = {
   response: {
@@ -33,38 +34,40 @@ export const Product: FC<Props> = (props) => {
   const priceFormatted = formatCurrency(amount, currency);
   return (
     <Layout>
-      <Breadcrumbs items={categories} />
-      <ProductWrapper>
-        <ProductCardWrapper>
-          <HeaderCardWrapper>
-            <SideBarWrapper>
-              <Image
-                layout="fill"
-                objectFit="contain"
-                src={picture}
-                alt="product"
-                quality={100}
-              />
-            </SideBarWrapper>
-            <ContentWrapper>
-              <TextExtraSmall isProductDetail>
-                {capitalize(condition)}
-              </TextExtraSmall>
-              <TextStandard fontWeight="bold">{title}</TextStandard>
-              <TextPrice isProductDetail marginTop="0.5rem">
-                {priceFormatted}
-              </TextPrice>
-              <ButtonContainer>
-                <Button>Comprar</Button>
-              </ButtonContainer>
-            </ContentWrapper>
-          </HeaderCardWrapper>
-          <FooterWrapper>
-            <DescriptionTitle>Descripción del producto</DescriptionTitle>
-            <DescriptionWrapper>{description}</DescriptionWrapper>
-          </FooterWrapper>
-        </ProductCardWrapper>
-      </ProductWrapper>
+      <ErrorBoundary>
+        <Breadcrumbs items={categories} />
+        <ProductWrapper>
+          <ProductCardWrapper>
+            <HeaderCardWrapper>
+              <SideBarWrapper>
+                <Image
+                  layout="fill"
+                  objectFit="contain"
+                  src={picture}
+                  alt="product"
+                  quality={100}
+                />
+              </SideBarWrapper>
+              <ContentWrapper>
+                <TextExtraSmall isProductDetail>
+                  {capitalize(condition)}
+                </TextExtraSmall>
+                <TextStandard fontWeight="bold">{title}</TextStandard>
+                <TextPrice isProductDetail marginTop="0.5rem">
+                  {priceFormatted}
+                </TextPrice>
+                <ButtonContainer>
+                  <Button>Comprar</Button>
+                </ButtonContainer>
+              </ContentWrapper>
+            </HeaderCardWrapper>
+            <FooterWrapper>
+              <DescriptionTitle>Descripción del producto</DescriptionTitle>
+              <DescriptionWrapper>{description}</DescriptionWrapper>
+            </FooterWrapper>
+          </ProductCardWrapper>
+        </ProductWrapper>
+      </ErrorBoundary>
     </Layout>
   );
 };

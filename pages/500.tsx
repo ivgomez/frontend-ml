@@ -1,23 +1,53 @@
+import { breakpoint } from "@theme";
 import Image from "next/image";
 import styled from "styled-components";
-import { breakpoint } from "@theme";
 
 export default function Custom500() {
   return (
     <PageWrapper>
-      <ImageSection></ImageSection>
+      <ImageSection>
+        <div>
+          <Image
+            src="/static/images/404.png"
+            alt="404"
+            width={500}
+            height={500}
+          />
+        </div>
+        <div>
+          <a href="https://pngtree.com/so/404">404 png from pngtree.com</a>
+        </div>
+      </ImageSection>
       <TextContent>
-        <h1>500 - Server-side error occurred</h1>
+        <h1>Woops! </h1>
+        <h2>Something went wrong</h2>
       </TextContent>
     </PageWrapper>
   );
 }
 
-export const PageWrapper = styled.div`
+const ImageSection = styled.div`
   display: flex;
-  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  ${breakpoint.tablet`
+    flex-direction: column;
+  `}
 `;
 
-export const ImageSection = styled.div``;
+const TextContent = styled.div`
+  text-align: center;
+`;
 
-export const TextContent = styled.div``;
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  ${breakpoint.tablet`
+    flex-direction: row;
+  `}
+`;
