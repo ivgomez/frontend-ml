@@ -8,9 +8,9 @@
  * @return {string}
  */
 export const formatCurrency = (
-  amount: number,
-  currency: string,
-  decimals?: number,
+  amount: number = 0,
+  currency: string = "ARG",
+  decimals: number = 0,
   zone?: string
 ) =>
   new Intl.NumberFormat((zone = zone || "es-AR"), {
