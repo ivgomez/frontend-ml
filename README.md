@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - [Main](https://frontend-ml.vercel.app/)
 
-## Tech
+## Libraries
 
 - [Reactjs](https://reactjs.org/) - JavaScript library for building user interfaces
 - [Nextjs](https://github.com/zeit/next.js) - The React Framework
@@ -24,6 +24,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [jest-styled-component](https://github.com/styled-components/jest-styled-components) - Jest utils to Test styled components
 - [Lodash](https://lodash.com/) - A modern JavaScript utility library
 - [Axios](https://axios-http.com/) - Promise based HTTP client for the browser and node.js
+- [Nextjs progressbar](https://github.com/apal21/nextjs-progressbar) A simple Next.js progressbar component using NProgress.
+- [Jest](https://jestjs.io/) JavaScript Testing Framework with a focus on simplicity.
 
 ## Learn More
 
