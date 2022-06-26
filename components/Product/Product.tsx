@@ -54,9 +54,9 @@ export const Product: FC<Props> = (props) => {
                   {capitalize(condition)}
                 </TextExtraSmall>
                 <TextStandard fontWeight="bold">{title}</TextStandard>
-                <TextPrice isProductDetail marginTop="0.5rem">
+                <TextPriceStyled isProductDetail>
                   {priceFormatted}
-                </TextPrice>
+                </TextPriceStyled>
                 <ButtonContainer>
                   <Button>Comprar</Button>
                 </ButtonContainer>
@@ -133,9 +133,13 @@ const ContentWrapper = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${({ theme }) => theme.spaces?.m} 0;
+  padding-top: ${({ theme }) => theme.spaces?.m};
+  padding-bottom: ${({ theme }) => theme.spaces?.xs};
+  button {
+    margin-top: 0;
+  }
   ${breakpoint.laptop`
-    padding: 0;
+    padding-bottom: 0;
   `}
 `;
 
@@ -161,4 +165,11 @@ const DescriptionTitle = styled(TextMedium)`
   font-size: ${({ theme }: any) => theme.fontSize?.fontSize24px};
   font-weight: "bold";
   margin-bottom: ${({ theme }: any) => theme.spaces?.m};
+`;
+
+const TextPriceStyled = styled(TextPrice)`
+  margin-top: ${({ theme }: any) => theme.spaces?.xs};
+  ${breakpoint.tablet`
+    margin-top:0;
+ `}
 `;

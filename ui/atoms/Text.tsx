@@ -27,7 +27,7 @@ export const TextStandard = styled(TextBase)<ITextBase>`
   font-weight: ${({ fontWeight }) => fontWeight};
   ${breakpoint.tablet`
     font-size: 1.5rem;
-    line-height: 1em;
+    line-height: 1.4em;
     margin-bottom: 2rem;
   `}
 `;
