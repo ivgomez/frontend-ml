@@ -12,11 +12,18 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Development Environments
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- [Main](https://frontend-ml.vercel.app/)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Tech
+
+- [Reactjs](https://reactjs.org/) - JavaScript library for building user interfaces
+- [Nextjs](https://github.com/zeit/next.js) - The React Framework
+- [styled-components](https://www.styled-components.com/) - Visual primitives for the component age :nail_care:
+- [jest-styled-component](https://github.com/styled-components/jest-styled-components) - Jest utils to Test styled components
+- [Lodash](https://lodash.com/) - A modern JavaScript utility library
+- [Axios](https://axios-http.com/) - Promise based HTTP client for the browser and node.js
 
 ## Learn More
 
@@ -26,9 +33,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
