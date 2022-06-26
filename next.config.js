@@ -13,6 +13,7 @@ const nextConfig = {
     config.resolve.alias["@models"] = path.join(__dirname, "./models");
     config.resolve.alias["@utils"] = path.join(__dirname, "./lib/utils");
     config.resolve.alias["@components"] = path.join(__dirname, "./components");
+    config.resolve.alias["@pages"] = path.join(__dirname, "./pages");
     config.resolve.alias["@ui"] = path.join(__dirname, "./ui");
     config.module.rules.push({
       test: /\.(eot|woff|woff2|ttf)$/,

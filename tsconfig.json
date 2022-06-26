@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@pages/*": ["./pages/*"],
       "@components/*": ["./components/*"],
       "@ui/*": ["./ui/*"],
       "@theme": ["./lib/theme"],

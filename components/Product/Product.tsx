@@ -13,7 +13,8 @@ import {
 } from "@ui/atoms/Text";
 import { Item } from "@models/responseModel/Item";
 import { formatCurrency } from "@utils/helpers/formatterHelper";
-import { Breadcrumbs, Button } from "@ui/molecules";
+import { Breadcrumbs } from "@ui/molecules";
+import { Button } from "@ui/atoms";
 import ErrorBoundary from "@components/Global/ErrorBoundary";
 
 type Props = {

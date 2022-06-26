@@ -17,8 +17,8 @@ const ButtonWrapper = styled.button`
   color: ${({ theme }) => theme.colors?.white};
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSize?.fontSize16px};
-  padding: ${({ theme }) => theme.spaces?.xs} 0;
-
+  margin-top: ${({ theme }) => theme.spaces?.xs};
+  padding: ${({ theme }) => theme.spaces?.xs};
   ${breakpoint.tablet`
     margin-top: 0;
     margin-bottom: ${({ theme }: any) => theme.spaces?.m};

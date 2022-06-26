@@ -3,3 +3,4 @@ export * from "./Input";
 export * from "./LogoSection";
 export * from "./SearchButton";
 export * from "./Text";
+export * from "./Button";
