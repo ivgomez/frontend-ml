@@ -21,6 +21,8 @@ export const TextMedium = styled(TextBase)<ITextBase>`
   `}
 `;
 
+TextMedium.displayName = "TextMedium";
+
 export const TextStandard = styled(TextBase)<ITextBase>`
   font-size: 1.25rem;
   letter-spacing: 0.3px;
@@ -32,6 +34,8 @@ export const TextStandard = styled(TextBase)<ITextBase>`
   `}
 `;
 
+TextStandard.displayName = "TextStandard";
+
 export const TextSmall = styled(TextBase)<ITextBase>`
   font-size: ${({ theme }) => theme.convert.px.rem(14)};
   line-height: 1.57;
@@ -42,6 +46,8 @@ export const TextSmall = styled(TextBase)<ITextBase>`
       isProductDetail && "1rem"};
   `}
 `;
+
+TextSmall.displayName = "TextSmall";
 
 export const TextExtraSmall = styled(TextBase)<ITextBase>`
   font-size: 0.75rem;
@@ -56,11 +62,15 @@ export const TextExtraSmall = styled(TextBase)<ITextBase>`
   `}
 `;
 
+TextExtraSmall.displayName = "TextExtraSmall";
+
 export const TextSubHeader = styled(TextBase)`
   font-size: 0.875rem;
   line-height: 1.25rem;
   letter-spacing: 1.6px;
 `;
+
+TextSubHeader.displayName = "TextSubHeader";
 
 export const TextPrice = styled(TextBase)<ITextBase>`
   font-size: ${({ theme }) => theme.fontSize?.fontSize28px};
@@ -70,3 +80,5 @@ export const TextPrice = styled(TextBase)<ITextBase>`
   margin-right: ${({ marginRight }) => marginRight || "0"};
   margin-right: ${({ marginRight }) => marginRight || "0"};
 `;
+
+TextPrice.displayName = "TextPrice";

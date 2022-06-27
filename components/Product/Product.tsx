@@ -30,8 +30,20 @@ export const Product: FC<Props> = (props) => {
     response: { item, categories = [] },
   } = props;
 
-  const { description, condition, title, picture, price } = item || {};
+  const {
+    description,
+    condition,
+    title,
+    picture,
+    price,
+    soldQuantity = 0,
+  } = item || {};
   const { amount, currency } = price || {};
+  const conditionFormatted = capitalize(condition);
+  const sellInfo = `${soldQuantity} vendidos`;
+  const sellInfoDescription = `${
+    conditionFormatted ? `${conditionFormatted} - ${sellInfo}` : `${sellInfo}`
+  }`;
   const priceFormatted = formatCurrency(amount, currency);
   return (
     <Layout>
@@ -41,17 +53,19 @@ export const Product: FC<Props> = (props) => {
           <ProductCardWrapper>
             <HeaderCardWrapper>
               <SideBarWrapper>
-                <Image
-                  layout="fill"
-                  objectFit="contain"
-                  src={picture}
-                  alt="product"
-                  quality={100}
-                />
+                {picture && (
+                  <Image
+                    layout="fill"
+                    objectFit="contain"
+                    src={picture}
+                    alt="product"
+                    quality={100}
+                  />
+                )}
               </SideBarWrapper>
               <ContentWrapper>
                 <TextExtraSmall isProductDetail>
-                  {capitalize(condition)}
+                  {sellInfoDescription}
                 </TextExtraSmall>
                 <TextStandard fontWeight="bold">{title}</TextStandard>
                 <TextPriceStyled isProductDetail>

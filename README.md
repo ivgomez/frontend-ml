@@ -2,19 +2,35 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+### How to run the project locally
 
-```bash
-npm run dev
-# or
-yarn dev
+1. Clone the repository:
+
+```
+git clone https://github.com/ivgomez/frontend-ml.git
 ```
 
+2. run `cd frontend-ml`
+
+3. run `npm ci` (or if there is no package-lock.json file, run `npm i`)
+
+4. run `npm run dev`
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### How to run the tests
+
+run `npm run test`
+
+or `npm run test:watch`
 
 ## Development Environments
 
 - [Main](https://frontend-ml.vercel.app/)
+
+## Documentation
+
+- [Web UI Doc](https://github.com/ivgomez/frontend-ml/wiki/Web-UI-Interface)
 
 ## Libraries
 
