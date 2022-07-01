@@ -30,7 +30,7 @@ or `npm run test:watch`
 
 ## Documentation
 
-- [Web UI Doc](https://github.com/ivgomez/frontend-ml/wiki/Web-UI-Interface)
+- [Web UI Doc](https://github.com/ivgomez/frontend-ml/wiki/Web-UI)
 
 ## Libraries
 
